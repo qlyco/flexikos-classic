@@ -94,9 +94,11 @@ def game():
       break
 
     if guess.isalpha() and verify(guess.upper()):
+      word_value: int = words[guess.upper()]
+      word_value = word_value // 2 if guess.upper() in answers else word_value
+      score += word_value
       answers.append(guess.upper())
-      score += words[guess.upper()]
-      print("\n" + guess.upper() + " = " + str(words[guess.upper()]) + " pts\n")
+      print("\n" + guess.upper() + " = " + str(word_value) + " pts\n")
       draw()
     else:
       print("\nInvalid word.\n")
